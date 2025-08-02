@@ -1,0 +1,16 @@
+services:
+  ai-app:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - 8501:8501
+    environment:
+      - OPENROUTER_API_KEY
+    depends_on:
+      - llm
+  llm:
+    provider:
+      type: model
+      options:
+        model: ai/gemma3:1B-Q4_K_M  
